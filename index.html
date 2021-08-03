@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>S-HERO</title>
+    <meta name="description" content="Node-RED UI Builder - VueJS + bootstrap-vue default template">
+    <link rel="icon" href="./images/node-blue.ico">
+    <link type="text/css" rel="stylesheet" href="../uibuilder/vendor/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.css" />
+    <link type="text/css" rel="stylesheet" href="../uibuilder/vendor/bootstrap-icons/font/bootstrap-icons.css" />
+    <link type="text/css" rel="stylesheet" href="./index.css" media="all">
+
+</head>
+<body bgcolor='#d9d9d9'>
+
+    <div id='app' class='maincontainer'>
+    <b-container class="bv-example-row" fluid>
+    <b-row class="text-center">
+        <b-col cols='4'>
+            <b-card title='' id='temp-card' >
+                <b-card-text>
+                    <p class='nomargin'>Temperature</p>
+                    <i style ="font-size:65px;" class="bi bi-thermometer-half"></i><a style ="font-size:45px; font-weight:200;"> {{temp}}</a>
+                    <p class='nomargin'>Humidity</p>
+                    <i style ="font-size:65px;" class="bi bi-droplet"></i><a style ="font-size:45px; font-weight:200;"> {{hum}}</a>
+                </b-card-text>
+            </b-card>
+                
+            <b-card title="">
+                <b-card-text>
+                    <div class='fan_mode_title'>
+                        <i style ="font-size:65px; margin-right:18px;" class="bi bi-wind"></i>
+                        <a style ="font-size:35px; font-weight:300;"> Fan Mode</a>
+                    </div>
+                    
+                    <b-container class="bv-example-row">
+                    <b-row>
+                        <b-col><p :class="{act: fan_status[0], deact: !fan_status[0]}">Low</p></b-col>
+                        <b-col><p :class="{act: fan_status[1], deact: !fan_status[1]}">Mid</p></b-col>
+                        <b-col><p :class="{act: fan_status[2], deact: !fan_status[2]}">High</p></b-col>
+                        <div class="w-100"></div>
+                        <b-col><p :class="{act: fan_status[3], deact: !fan_status[3]}">Full</p></b-col>
+                        <b-col><p :class="{act: fan_status[4], deact: !fan_status[4]}">Auto</p></b-col>
+                        <b-col><p :class="{act: fan_status[5], deact: !fan_status[5]}">Off</p></b-col>
+                    </b-row>
+                    </b-container>
+                    
+                </b-card-text>
+            </b-card>    
+        </b-col>
+        <b-col cols='8'>
+            <b-card title="" class="long_card">
+            <b-card-text>
+                <p>미세먼지: {{mise}}</p>
+                <br>
+                <b-container class="bv-example-row">
+                  <b-row>
+                    <b-col><span><a class='toleft mise-1-t'>좋음</a><a class='toright mise-1-t'>~30</a></span></b-col>
+                    <b-col><span><a class='toleft mise-2-t'>보통</a><a class='toright mise-2-t'>~80</a></span></b-col>
+                    <b-col><span><a class='toleft mise-3-t'>나쁨</a><a class='toright mise-3-t'>~150</a></span></b-col>
+                    <b-col><span><a class='toleft mise-4-t'>매우나쁨</a></span></b-col>
+                    <div class="w-100"></div>
+                    <b-col class="mise-1"></b-col>
+                    <b-col class="mise-2"></b-col>
+                    <b-col class="mise-3"></b-col>
+                    <b-col class="mise-4"></b-col>
+                  </b-row>
+                </b-container>
+                <div class="bar">
+ 					<div class="progress" v-bind:style = "{'background':mise_bar_color, 'width':mise_bar_value+'%'}"></div>
+ 				</div>
+                <br>
+                <p>초미세먼지: {{chomise}}</p>                
+                <br>
+                <b-container class="bv-example-row">
+                  <b-row>
+                    <b-col><span><a class='toleft mise-1-t'>좋음</a><a class='toright mise-1-t'>~15</a></span></b-col>
+                    <b-col><span><a class='toleft mise-2-t'>보통</a><a class='toright mise-2-t'>~35</a></span></b-col>
+                    <b-col><span><a class='toleft mise-3-t'>나쁨</a><a class='toright mise-3-t'>~75</a></span></b-col>
+                    <b-col><span><a class='toleft mise-4-t'>매우나쁨</a></span></b-col>
+                    <div class="w-100"></div>
+                    <b-col class="mise-1"></b-col>
+                    <b-col class="mise-2"></b-col>
+                    <b-col class="mise-3"></b-col>
+                    <b-col class="mise-4"></b-col>
+                  </b-row>
+                </b-container>
+ 				<div class="bar">
+ 					<div class="progress" v-bind:style = "{'background':chomise_bar_color, 'width':chomise_bar_value+'%'}"></div>
+ 				</div>
+ 				<!--
+ 				<div>
+ 				    <p>CO2: {{co2}}</p>
+ 				    <p>VOC: {{voc}}</p>
+ 				</div>-->
+ 				<b-container class="bv-example-row">
+                  <b-row>
+                    <b-col>
+                        <div id="chartDiv" style="max-width: 250px; height: 250px; margin: 0px auto;"></div>
+                    </b-col>
+                    <b-col>
+                        <div id="chartDiv2" style="max-width: 250px; height: 250px; margin: 0px auto;"></div>
+                    </b-col>
+
+                  </b-row>
+                </b-container>
+ 				
+ 				
+            </b-card-text>
+            </b-card>
+        </b-col>
+    </b-row>
+    </b-container>
+    </div>
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+    <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
+    <script src="../uibuilder/vendor/vue/dist/vue.js"></script>
+    <script src="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.js"></script>
+    <script src="./uibuilderfe.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

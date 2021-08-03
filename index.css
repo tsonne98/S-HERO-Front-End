@@ -1,0 +1,105 @@
+.maincontainer{
+    margin: 15px 7.5px 0px 7.5px;
+    text-align:center;
+}
+#temp-card{
+    margin-bottom:7.5px;
+}
+#center_boundary{
+    padding-top:10px;
+}
+.col-4, .col-8{
+    padding-left:7.5px;
+    padding-right:7.5px;
+}
+.card{
+    height:270px;
+    border: 1px solid #cccccc;
+    border-radius:0.1rem;
+    /*
+    width:300px;
+    text-align:left;
+    */
+}
+.long_card{
+    height:547.5px;
+}
+.mise-1{
+    background:#32a1ff;
+    height:2px;
+}
+.mise-2{
+    background:#00c73c;
+    height:2px;
+}
+.mise-3{
+    background:#fd9b5a;
+    height:2px;
+}
+.mise-4{
+    background:#ff5959;
+    height:2px;
+}
+.bv-example-row{
+    padding-bottom:3px;
+}
+.toleft{
+    display: inline-block;
+    position: absolute;
+    bottom: 2px;
+    left: 6px;
+    letter-spacing: 0;
+    text-align: left;
+}
+.toright{
+    display: inline-block;
+    position: absolute;
+    bottom: 2px;
+    right: 6px;
+    letter-spacing: 0;
+    text-align: right;
+}
+.mise-1-t{
+    color:#32a1ff;
+    font-size:14px;
+}
+.mise-2-t{
+    color:#00c73c;
+    font-size:14px;
+}
+.mise-3-t{
+    color:#fd9b5a;
+    font-size:14px;
+}
+.mise-4-t{
+    color:#ff5959;
+    font-size:14px;
+}
+.bar{
+	width: 100%;
+	background:transparent;
+	overflow: hidden;
+}
+.progress{
+	float:left;
+	padding:3px;
+}
+.nomargin{
+    margin-bottom:0;
+}
+.act{
+    font-size:30px;    
+    color:black;
+}
+.deact{
+    font-size:30px;
+    color:#e3e3e3;
+}
+.fan_mode_title{
+    color:black;
+    margin-bottom:20px;
+}
+svg > g > g:nth-child(4) {
+    display: none;
+}
+
