@@ -8,23 +8,24 @@
     <meta name="description" content="Node-RED UI Builder - VueJS + bootstrap-vue default template">
     <link type="text/css" rel="stylesheet" href="http://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="http://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <link type="text/css" rel="stylesheet" href="./index.css" media="all">
 
 </head>
-<body style="background-color: #1f2124;">
-    <br><br>
+<!--<body style="background-color: #1f2124;">-->
+<body>
+
+    <br>
     <div id='dashboard'>
         <div>
             <b-container class="bv-example-row">
                 <b-row>
-                    <b-col sm="6">
-                        <b-card bg-variant="dark" text-variant="white" style="height:200px">
+                    <b-col md="6">
+                        <b-card text-variant="white" style="height:200px;" class="main_card">
                             <b-row>
                                 <b-col><b-card-text>
-                                    <h5 style="color:rgb(221, 113, 113)">Temperature</h5><br><br><br>
-                                    <h1 style="text-align: right; color:rgb(221, 113, 113)">29.0℃</h1>
+                                    <h5>Temperature</h5><br><br><br>
+                                    <h1 style="text-align: right;">29.0℃</h1>
                                 </b-card-text></b-col>
                                 <b-col><b-card-text>
                                     <h5>Humidity</h5><br><br><br>
@@ -33,8 +34,8 @@
                             </b-row>
                         </b-card>
                     </b-col>
-                    <b-col sm="6">
-                        <b-card bg-variant="dark" text-variant="white" style="height:200px">
+                    <b-col md="6">
+                        <b-card text-variant="white" style="height:200px;" class="main_card">
                             <b-row>
                                 <b-col><b-card-text>
                                     <h5>PM10</h5><br><br><br>
@@ -50,72 +51,69 @@
                 </b-row>
                 <br>
                 <b-row>
-                    <b-col sm="3">
-                        <b-card bg-variant="dark" text-variant="white" style="height:250px">
-                            <b-row>
-                                <h5>FAN SPEED</h5><br><br><br>
-                            </b-row>
-                            <b-row style="text-align: center;">
-                                <div class="fan_mode_display">
-                                <b-row>
-                                    <b-col class="active_fan"><h3>AUTO</h3></b-col>
-                                    <b-col class="deactive_fan"><h3>OFF</h3  ></b-col>
-                                </b-row>
-                                <b-row>
-                                    <b-col class="deactive_fan"><h3>LOW</h3></b-col>
-                                    <b-col class="deactive_fan"><h3>MID</h3></b-col> 
-                                </b-row>
-                                <b-row>
-                                    <b-col class="deactive_fan"><h3>HIGH</h3></b-col>
-                                    <b-col class="deactive_fan"><h3>FULL</h3></b-col>
-                                </b-row>
-                                </div>
-                            </b-row>
-                        </b-card>
-                    </b-col>
-                    <b-col sm="5">
+                    <b-col sm="4">
                         <div>
-                            <b-card bg-variant="dark" text-variant="white" style="height:70px">
-                                    <h6 style="text-align: center;">2021년 08월 04일 수요일 오후 8시 57분</h6>
-                            </b-card>
-                            <b-card bg-variant="dark" text-variant="white" style="height:180px">
+                            <b-card text-variant="white" style="height:260px;" class="main_card">
+                                <b-row style="margin-bottom:30px">
+                                    <b-col>
+                                        <h5>CO2</h5><br>
+                                        <h2 style="text-align: right;">572ppm</h2>
+                                    </b-col>
+                                </b-row>
                                 <b-row>
                                     <b-col>
-                                        <h5>CO2</h5><br><br>
-                                        <h1 style="text-align: right;">572ppm</h1>
-                                    </b-col>
-                                    <b-col>
-                                        <h5>VOC</h5><br><br>
-                                        <h1 style="text-align: right;">2단계</h1>
+                                        <h5>VOC</h5><br>
+                                        <h2 style="text-align: right;">2단계</h2>
                                     </b-col>
                                 </b-row>
                             </b-card>
                         </div>
                     </b-col>
-                    <b-col sm="4">
-                        <b-card bg-variant="dark" text-variant="white" style="height:250px">
-                            <b-row>
-                                <h5>NOTIFICATION</h5><br>
-                            </b-row>
-                            <b-row>
-                                <b-card text-variant="white" style="margin-left:5px; 
-                                margin-right:5px; background-color: #66666611; width:280px;
-                                padding : 0rem 0rem;" id="notification_card">
-                                    <b-card-text>
-                                            <small style="font-size: x-small;">CO2 알림 - 3분 전</small>
+                    <b-col sm="8">
+                        <b-row style="margin: 0px 0px 10px 0px;">
+                            <b-card text-variant="white" class="fan_card_body main_card" >
+                                <b-row>
+                                    <b-col style="text-align: center;"><span>FAN</span></b-col>
+                                    <b-col class="deactive_fan"><span>AUTO</span></b-col>
+                                    <b-col class="deactive_fan"><span>OFF</span></b-col>
+                                    <b-col class="deactive_fan"><span>LOW</span></b-col>
+                                    <b-col class="active_fan"><span>MID</span></b-col> 
+                                    <b-col class="deactive_fan"><span>HIGH</span></b-col>
+                                    <b-col class="deactive_fan"><span>FULL</span></b-col>
+                                </b-row>
+                            </b-card>
+                        </b-row>
+                        <b-row style="margin: 0px 0px 10px 0px;">
+                            <b-card text-variant="white" style="height: 208px;" class="notification_card_body main_card">
+                                <!--
+                                    <b-row>
+                                        <span style="font-size: large;   margin-bottom:8px;">알림</span><br>
+                                    </b-row>
+                                -->
+                                
+                                <b-row>
+                                    <b-card text-variant="white" style="background-color: #b4b4b411; box-shadow: 0.2rem 0.2rem 0.2rem #00000057;" class="notification_card_body">
+                                        <b-card-text>
+                                            <p style="font-size: x-small;">CO2 알림 - 3분 전</p>
                                             <p>이산화탄소 농도가 너무 높습니다. 창문을 열어 환기해주세요.</p>
-                                    </b-card-text>
-                                </b-card>
-                                <b-card text-variant="white" style="margin-left:5px; 
-                                margin-right:5px; background-color: #66666611; width:280px;
-                                padding : 0rem 0rem;" id="notification_card">
-                                    <b-card-text>
-                                            <small style="font-size: x-small;">미세먼지 알림 - 1시간 전</small>
+                                        </b-card-text>
+                                    </b-card>
+                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification_card_body">
+                                        <b-card-text>
+                                            <p style="font-size: x-small;">미세먼지 알림 - 1시간 전</p>
                                             <p>미세먼지 농도가 너무 높습니다. 창문을 열어 환기해주세요.</p>
-                                    </b-card-text>
-                                </b-card>
-                            </b-row>
-                        </b-card>
+                                        </b-card-text>
+                                    </b-card>
+                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification_card_body">
+                                        <b-card-text>
+                                            <p style="font-size: x-small;">기기 이상 알림 - 3일 전</p>
+                                            <p>필터 교체가 필요합니다.</p>
+                                        </b-card-text>
+                                    </b-card>
+
+                                </b-row>
+                            </b-card>  
+                        </b-row>
                     </b-col>
                 </b-row>
             </b-container>

@@ -8,12 +8,36 @@ p{
 
 .active_fan{
     color:white;
+    text-align: center;
+    font-weight: 600;
 }
 
 .deactive_fan{
     color:#ffffff28;
+    text-align: center;
 }
 
 #notification_card > .card-body{
     padding:0.5rem 0.5rem;
+}
+
+.fan_card_body > .card-body{
+    padding : 8px 8px 8px 8px;
+}
+
+.notification_card_body > .card-body{
+    padding : 8px 8px 8px 8px;
+}
+
+.notification_card_body{
+    margin-bottom:8px;
+}
+
+body{
+    background-color: #141927;
+}
+
+.main_card{
+    background-color: #1f2940; 
+    box-shadow: 0.2rem 0.2rem 0.2rem #00000057;
 }
