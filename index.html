@@ -20,6 +20,7 @@
             <b-container class="bv-example-row">
                 <b-row>
                     <b-col md="6">
+                        <!-- 온습도 UI -->
                         <b-card text-variant="white" style="height:190px;" class="main_card">
                             <b-row style="height: 100px;">
                                 <b-col>
@@ -31,41 +32,75 @@
                             </b-row>
                             <b-row>
                                 <b-col>
-                                    <h1 style="text-align: right;">29.0℃</h1>
+                                    <h1 style="text-align: right;">{{airData.temp}}</h1>
                                 </b-col>
                                 <b-col>
-                                    <h1 style="text-align: right;">80.3%</h1>
+                                    <h1 style="text-align: right;">{{airData.hum}}</h1>
                                 </b-col>
                             </b-row>
                         </b-card>
                     </b-col>
                     <b-col md="6">
+                        <!-- 미세/초미세 UI -->
                         <b-card text-variant="white" style="height:190px;" class="main_card">
                             <b-row>
                                 <b-col>
                                     <b-row style="height: 100px;">
                                         <b-col>
-                                            <h5 style="color:#d8ad51;" >PM10</h5>
+                                            <h5 :class="{
+                                                color_1 : airData.pm10.iscolor[0],
+                                                color_2 : airData.pm10.iscolor[1],
+                                                color_3 : airData.pm10.iscolor[2],
+                                                color_4 : airData.pm10.iscolor[3],
+                                            }">PM10</h5>
                                         </b-col>
-                                        <b-col style="text-align: center;">
-                                            <div style="font-size: x-large; color:#d8ad51; font-weight: 500;">나쁨</div>
+                                        <b-col style="text-align: center;  padding-left:50px;">
+                                            <div style="font-size: x-large; font-weight: 500;" 
+                                            :class="{
+                                                color_1 : airData.pm10.iscolor[0],
+                                                color_2 : airData.pm10.iscolor[1],
+                                                color_3 : airData.pm10.iscolor[2],
+                                                color_4 : airData.pm10.iscolor[3],
+                                            }">{{airData.pm10.step}}</div>
                                         </b-col>
                                     </b-row>
                                     <b-row>
-                                        <h1 style="text-align: right; color:#d8ad51;">132ppm</h1>
+                                        <h1 style="text-align: right;" 
+                                        :class="{
+                                            color_1 : airData.pm10.iscolor[0],
+                                            color_2 : airData.pm10.iscolor[1],
+                                            color_3 : airData.pm10.iscolor[2],
+                                            color_4 : airData.pm10.iscolor[3],
+                                        }">{{airData.pm10.value}}</h1>
                                     </b-row>
                                 </b-col>
                                 <b-col>
                                     <b-row style="height: 100px;">
                                         <b-col>
-                                            <span style="color:#d85151; font-size: 20px;">PM2.5</span>
+                                            <span style="font-size: 20px;" 
+                                            :class="{
+                                                color_1 : airData.pm2.iscolor[0],
+                                                color_2 : airData.pm2.iscolor[1],
+                                                color_3 : airData.pm2.iscolor[2],
+                                                color_4 : airData.pm2.iscolor[3],
+                                            }">PM2.5</span>
                                         </b-col>
-                                        <b-col style="text-align: right;">
-                                            <span style="font-size: x-large; color:#d85151;">매우<br>나쁨</span>
+                                        <b-col style="text-align: right;  padding-left:50px;">
+                                            <span style="font-size: x-large;" :class="{
+                                                color_1 : airData.pm2.iscolor[0],
+                                                color_2 : airData.pm2.iscolor[1],
+                                                color_3 : airData.pm2.iscolor[2],
+                                                color_4 : airData.pm2.iscolor[3],
+                                            }">{{airData.pm2.step}}</span>
                                         </b-col>
                                     </b-row>
                                     <b-row>
-                                        <h1 style="text-align: right; color:#d85151;">25ppm</h1>
+                                        <h1 style="text-align: right;" :class="{
+                                            color_1 : airData.pm2.iscolor[0],
+                                            color_2 : airData.pm2.iscolor[1],
+                                            color_3 : airData.pm2.iscolor[2],
+                                            color_4 : airData.pm2.iscolor[3],
+                                        }">{{airData.pm2.value}}</h1>
                                     </b-row>
                                 </b-col>
                             </b-row>
@@ -76,81 +111,81 @@
                 <br>
                 <b-row>
                     <b-col sm="4">
+                        <!-- CO2 UI -->
                         <b-card text-variant="white" style="height:135px; margin-bottom: 10px;" class="main_card">
                             <b-row style="height:60px">
                                 <b-col>
-                                    <span style="color: #4668ff; font-size: 20px;">CO2</span>
+                                    <span style="font-size: 20px;" :class="{
+                                        color_1 : airData.co2.iscolor[0],
+                                        color_2 : airData.co2.iscolor[1],
+                                        color_3 : airData.co2.iscolor[2],
+                                        color_4 : airData.co2.iscolor[3],
+                                    }">CO2</span>
                                 </b-col>
                                 <b-col style="text-align: right; vertical-align: bottom;">
-                                    <span style="font-size: x-large; color:#4668ff;">좋음</span>
+                                    <span style="font-size: x-large;" :class="{
+                                        color_1 : airData.co2.iscolor[0],
+                                        color_2 : airData.co2.iscolor[1],
+                                        color_3 : airData.co2.iscolor[2],
+                                        color_4 : airData.co2.iscolor[3],
+                                    }">{{airData.co2.step}}</span>
                                 </b-col>
                             </b-row>
                             <b-row>
-                                <span style="text-align: right; font-size: xx-large; color:#4668ff;">572ppm</span>
+                                <span style="text-align: right; font-size: xx-large;" :class="{
+                                    color_1 : airData.co2.iscolor[0],
+                                    color_2 : airData.co2.iscolor[1],
+                                    color_3 : airData.co2.iscolor[2],
+                                    color_4 : airData.co2.iscolor[3],
+                                }">{{airData.co2.value}}</span>
                             </b-row>
                         </b-card>
+                        <!-- VOC UI -->
                         <b-card text-variant="white" style="height:135px;" class="main_card">
                             <b-row style="height:60px">
                                 <b-col>
-                                    <span style="color: #46ff5f91; font-size: 20px;">VOC</span>
+                                    <span style="font-size: 20px;" :class="{
+                                        color_1 : airData.voc.iscolor[0],
+                                        color_2 : airData.voc.iscolor[1],
+                                        color_3 : airData.voc.iscolor[2],
+                                        color_4 : airData.voc.iscolor[3],
+                                    }">VOC</span>
                                 </b-col>
                                 <b-col style="text-align: right; vertical-align: bottom;">
-                                    <span style="font-size: x-large; color:#46ff5f91;">보통</span>
+                                    <span style="font-size: x-large;" :class="{
+                                        color_1 : airData.voc.iscolor[0],
+                                        color_2 : airData.voc.iscolor[1],
+                                        color_3 : airData.voc.iscolor[2],
+                                        color_4 : airData.voc.iscolor[3],
+                                    }">{{airData.voc.step}}</span>
                                 </b-col>
                             </b-row>
                             <b-row >
-                                <span style="text-align: right; font-size: xx-large; color:#46ff5f91;">1단계</span>
+                                <span style="text-align: right; font-size: xx-large;" :class="{
+                                    color_1 : airData.voc.iscolor[0],
+                                    color_2 : airData.voc.iscolor[1],
+                                    color_3 : airData.voc.iscolor[2],
+                                    color_4 : airData.voc.iscolor[3],
+                                }">{{airData.voc.value}}</span>
                             </b-row>
                         </b-card>
-
-
-
-
-                        <!--
-                            <b-card text-variant="white" style="height:280px;" class="main_card">
-                                <b-col style="height: 52%;">
-                                    <b-row style="height:71px">
-                                        <b-col>
-                                            <span style="color: #4668ff; font-size: 20px;">CO2</span>
-                                        </b-col>
-                                        <b-col style="text-align: right; vertical-align: bottom;">
-                                            <span style="font-size: x-large; color:#4668ff;">좋음</span>
-                                        </b-col>
-                                    </b-row>
-                                    <b-row>
-                                        <span style="text-align: right; font-size: xx-large; color:#4668ff;">572ppm</span>
-                                    </b-row>
-                                </b-col>
-                                <b-col style="height: 45%;">
-                                    <b-row style="height:71px">
-                                        <b-col>
-                                            <span style="color: #46ff5f91; font-size: 20px;">VOC</span>
-                                        </b-col>
-                                        <b-col style="text-align: right; vertical-align: bottom;">
-                                            <span style="font-size: x-large; color:#46ff5f91;">보통</span>
-                                        </b-col>
-                                    </b-row>
-                                    <b-row >
-                                        <span style="text-align: right; font-size: xx-large; color:#46ff5f91;">1단계</span>
-                                    </b-row>
-                                </b-col>
-                            </b-card>
-                        -->
                     </b-col>
                     <b-col sm="8">
+                        <!-- 팬 UI -->
                         <b-row style="margin: 0px 0px 10px 0px;">
                             <b-card text-variant="white" class="fan_card_body main_card" >
                                 <b-row>
                                     <b-col style="text-align: center;"><span>FAN</span></b-col>
-                                    <b-col class="deactive_fan"><span>AUTO</span></b-col>
-                                    <b-col class="deactive_fan"><span>OFF</span></b-col>
-                                    <b-col class="deactive_fan"><span>LOW</span></b-col>
-                                    <b-col class="active_fan"><span>MID</span></b-col> 
-                                    <b-col class="deactive_fan"><span>HIGH</span></b-col>
-                                    <b-col class="deactive_fan"><span>FULL</span></b-col>
+                                    <b-col :class="[fanData.status[0] ? active : deactive]"><span>AUTO</span></b-col>
+                                    <b-col :class="[fanData.status[1] ? active : deactive]"><span>OFF</span></b-col>
+                                    <b-col :class="[fanData.status[2] ? active : deactive]"><span>LOW</span></b-col>
+                                    <b-col :class="[fanData.status[3] ? active : deactive]"><span>MID</span></b-col> 
+                                    <b-col :class="[fanData.status[4] ? active : deactive]"><span>HIGH</span></b-col>
+                                    <b-col :class="[fanData.status[5] ? active : deactive]"><span>FULL</span></b-col>
                                 </b-row>
                             </b-card>
                         </b-row>
+                        <!-- 알림 UI -->
                         <b-row style="margin: 0px 0px 10px 0px;">
                             <b-card text-variant="white" style="height: 228px; max-height: 228px;" class="notification_card_body main_card">
                                     <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
@@ -178,7 +213,10 @@
             </b-container>
         </div>
     </div>
-
+    <!--
+        <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
+        <script src="./uibuilderfe.js"></script>
+    -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue.min.js"></script>
     <script src="./index.js"></script>
