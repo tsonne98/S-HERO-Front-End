@@ -12,7 +12,6 @@
     <link type="text/css" rel="stylesheet" href="./index.css" media="all">
 
 </head>
-<!--<body style="background-color: #1f2124;">-->
 <body>
 
     <br>
@@ -21,53 +20,122 @@
             <b-container class="bv-example-row">
                 <b-row>
                     <b-col md="6">
-                        <b-card text-variant="white" style="height:200px;" class="main_card">
+                        <b-card text-variant="white" style="height:190px;" class="main_card">
+                            <b-row style="height: 100px;">
+                                <b-col>
+                                    <h5>Temperature</h5>
+                                </b-col>
+                                <b-col>
+                                    <h5>Humidity</h5>
+                                </b-col>
+                            </b-row>
                             <b-row>
-                                <b-col><b-card-text>
-                                    <h5>Temperature</h5><br><br><br>
+                                <b-col>
                                     <h1 style="text-align: right;">29.0℃</h1>
-                                </b-card-text></b-col>
-                                <b-col><b-card-text>
-                                    <h5>Humidity</h5><br><br><br>
+                                </b-col>
+                                <b-col>
                                     <h1 style="text-align: right;">80.3%</h1>
-                                </b-card-text></b-col>
+                                </b-col>
                             </b-row>
                         </b-card>
                     </b-col>
                     <b-col md="6">
-                        <b-card text-variant="white" style="height:200px;" class="main_card">
+                        <b-card text-variant="white" style="height:190px;" class="main_card">
                             <b-row>
-                                <b-col><b-card-text>
-                                    <h5>PM10</h5><br><br><br>
-                                    <h1 style="text-align: right;">132ppm</h1>
-                                </b-card-text></b-col>
-                                <b-col><b-card-text>
-                                    <h5>PM2.5</h5><br><br><br>
-                                    <h1 style="text-align: right;">25ppm</h1>
-                                </b-card-text></b-col>
+                                <b-col>
+                                    <b-row style="height: 100px;">
+                                        <b-col>
+                                            <h5 style="color:#d8ad51;" >PM10</h5>
+                                        </b-col>
+                                        <b-col style="text-align: center;">
+                                            <div style="font-size: x-large; color:#d8ad51; font-weight: 500;">나쁨</div>
+                                        </b-col>
+                                    </b-row>
+                                    <b-row>
+                                        <h1 style="text-align: right; color:#d8ad51;">132ppm</h1>
+                                    </b-row>
+                                </b-col>
+                                <b-col>
+                                    <b-row style="height: 100px;">
+                                        <b-col>
+                                            <span style="color:#d85151; font-size: 20px;">PM2.5</span>
+                                        </b-col>
+                                        <b-col style="text-align: right;">
+                                            <span style="font-size: x-large; color:#d85151;">매우<br>나쁨</span>
+                                        </b-col>
+                                    </b-row>
+                                    <b-row>
+                                        <h1 style="text-align: right; color:#d85151;">25ppm</h1>
+                                    </b-row>
+                                </b-col>
                             </b-row>
+                            
                         </b-card>
                     </b-col>
                 </b-row>
                 <br>
                 <b-row>
                     <b-col sm="4">
-                        <div>
-                            <b-card text-variant="white" style="height:260px;" class="main_card">
-                                <b-row style="margin-bottom:30px">
-                                    <b-col>
-                                        <h5>CO2</h5><br>
-                                        <h2 style="text-align: right;">572ppm</h2>
-                                    </b-col>
-                                </b-row>
-                                <b-row>
-                                    <b-col>
-                                        <h5>VOC</h5><br>
-                                        <h2 style="text-align: right;">2단계</h2>
-                                    </b-col>
-                                </b-row>
+                        <b-card text-variant="white" style="height:135px; margin-bottom: 10px;" class="main_card">
+                            <b-row style="height:60px">
+                                <b-col>
+                                    <span style="color: #4668ff; font-size: 20px;">CO2</span>
+                                </b-col>
+                                <b-col style="text-align: right; vertical-align: bottom;">
+                                    <span style="font-size: x-large; color:#4668ff;">좋음</span>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <span style="text-align: right; font-size: xx-large; color:#4668ff;">572ppm</span>
+                            </b-row>
+                        </b-card>
+                        <b-card text-variant="white" style="height:135px;" class="main_card">
+                            <b-row style="height:60px">
+                                <b-col>
+                                    <span style="color: #46ff5f91; font-size: 20px;">VOC</span>
+                                </b-col>
+                                <b-col style="text-align: right; vertical-align: bottom;">
+                                    <span style="font-size: x-large; color:#46ff5f91;">보통</span>
+                                </b-col>
+                            </b-row>
+                            <b-row >
+                                <span style="text-align: right; font-size: xx-large; color:#46ff5f91;">1단계</span>
+                            </b-row>
+                        </b-card>
+
+
+
+
+                        <!--
+                            <b-card text-variant="white" style="height:280px;" class="main_card">
+                                <b-col style="height: 52%;">
+                                    <b-row style="height:71px">
+                                        <b-col>
+                                            <span style="color: #4668ff; font-size: 20px;">CO2</span>
+                                        </b-col>
+                                        <b-col style="text-align: right; vertical-align: bottom;">
+                                            <span style="font-size: x-large; color:#4668ff;">좋음</span>
+                                        </b-col>
+                                    </b-row>
+                                    <b-row>
+                                        <span style="text-align: right; font-size: xx-large; color:#4668ff;">572ppm</span>
+                                    </b-row>
+                                </b-col>
+                                <b-col style="height: 45%;">
+                                    <b-row style="height:71px">
+                                        <b-col>
+                                            <span style="color: #46ff5f91; font-size: 20px;">VOC</span>
+                                        </b-col>
+                                        <b-col style="text-align: right; vertical-align: bottom;">
+                                            <span style="font-size: x-large; color:#46ff5f91;">보통</span>
+                                        </b-col>
+                                    </b-row>
+                                    <b-row >
+                                        <span style="text-align: right; font-size: xx-large; color:#46ff5f91;">1단계</span>
+                                    </b-row>
+                                </b-col>
                             </b-card>
-                        </div>
+                        -->
                     </b-col>
                     <b-col sm="8">
                         <b-row style="margin: 0px 0px 10px 0px;">
@@ -84,34 +152,25 @@
                             </b-card>
                         </b-row>
                         <b-row style="margin: 0px 0px 10px 0px;">
-                            <b-card text-variant="white" style="height: 208px;" class="notification_card_body main_card">
-                                <!--
-                                    <b-row>
-                                        <span style="font-size: large;   margin-bottom:8px;">알림</span><br>
-                                    </b-row>
-                                -->
-                                
-                                <b-row>
-                                    <b-card text-variant="white" style="background-color: #b4b4b411; box-shadow: 0.2rem 0.2rem 0.2rem #00000057;" class="notification_card_body">
+                            <b-card text-variant="white" style="height: 228px; max-height: 228px;" class="notification_card_body main_card">
+                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
                                         <b-card-text>
-                                            <p style="font-size: x-small;">CO2 알림 - 3분 전</p>
-                                            <p>이산화탄소 농도가 너무 높습니다. 창문을 열어 환기해주세요.</p>
+                                            <p style="font-size: x-small;">CO2 알림 - 3분전</p>
+                                            <p style="font-size:15px;">이산화탄소 농도가 너무 높습니다. 창문을 열어 환기해주세요.</p>
                                         </b-card-text>
                                     </b-card>
-                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification_card_body">
+                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
                                         <b-card-text>
                                             <p style="font-size: x-small;">미세먼지 알림 - 1시간 전</p>
-                                            <p>미세먼지 농도가 너무 높습니다. 창문을 열어 환기해주세요.</p>
+                                            <p style="font-size:15px;">미세먼지 농도가 너무 높습니다. 건강에 유의하세요.</p>
                                         </b-card-text>
                                     </b-card>
-                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification_card_body">
+                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
                                         <b-card-text>
                                             <p style="font-size: x-small;">기기 이상 알림 - 3일 전</p>
-                                            <p>필터 교체가 필요합니다.</p>
+                                            <p style="font-size:15px;">필터 교체가 필요합니다.</p>
                                         </b-card-text>
-                                    </b-card>
-
-                                </b-row>
+                                    </b-card>    
                             </b-card>  
                         </b-row>
                     </b-col>

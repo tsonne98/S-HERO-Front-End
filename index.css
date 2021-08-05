@@ -17,20 +17,20 @@ p{
     text-align: center;
 }
 
-#notification_card > .card-body{
-    padding:0.5rem 0.5rem;
-}
-
 .fan_card_body > .card-body{
     padding : 8px 8px 8px 8px;
 }
 
 .notification_card_body > .card-body{
-    padding : 8px 8px 8px 8px;
+    padding : 10px 0px 10px 0px;
 }
 
-.notification_card_body{
-    margin-bottom:8px;
+.notification > .card-body{
+    padding: 0.8rem 0.8rem;
+}
+
+.notification{
+    margin-bottom: 5px;
 }
 
 body{
@@ -40,4 +40,8 @@ body{
 .main_card{
     background-color: #1f2940; 
     box-shadow: 0.2rem 0.2rem 0.2rem #00000057;
+}
+
+.container{
+    max-width: 95%;
 }
