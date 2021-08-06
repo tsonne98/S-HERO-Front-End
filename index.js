@@ -10,9 +10,15 @@ const dashboard = new Vue({
             pm2 : {value : "53ppm", step : "매우나쁨", iscolor : [0, 0, 0, 1]},
         },
         fanData : {
-            status : [false, 0, 0, 0, 1, 0],
+            status : [0, 0, 0, 0, 1, 0],
         },
         notificationData : {
+            isData : [1, 0, 0, 0],
+            noData : {
+                title : "",
+                time : "",
+                contents : "알림이 없습니다.",
+            },
             top : {
                 title : "CO2 알림",
                 time : "3분 전",
@@ -31,6 +37,8 @@ const dashboard = new Vue({
         },
         active : "active_fan",
         deactive : "deactive_fan",
+        dis_notification : "dis_notification",
+        hide_notification : "hide_notification",
     },
     computed: {
 

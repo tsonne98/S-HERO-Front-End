@@ -58,3 +58,12 @@ body{
 .color_4{
     color:#d85151;
 }
+
+.hide_notification{
+    display:none;
+    background-color: #b4b4b411;
+}
+
+.dis_notification{
+    background-color: #b4b4b411;
+}

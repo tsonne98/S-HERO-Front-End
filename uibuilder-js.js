@@ -2,35 +2,43 @@ const dashboard = new Vue({
     el: '#dashboard',
     data:{
         airData : {
-            temp : "29.3℃",
-            hum : "80.2%",
-            co2 : {value : "312ppm", step : "좋음", iscolor : [1, 0, 0, 0]},
-            voc : {value : "1단계", step : "보통", iscolor : [0, 1, 0, 0]},
-            pm10 : {value : "91ppm", step : "나쁨", iscolor : [0, 0, 1, 0]},
-            pm2 : {value : "53ppm", step : "매우나쁨", iscolor : [0, 0, 0, 1]},
+            temp : "",
+            hum : "",
+            co2 : {value : "", step : "", iscolor : [1, 0, 0, 0]},
+            voc : {value : "", step : "", iscolor : [1, 0, 0, 0]},
+            pm10 : {value : "", step : "", iscolor : [1, 0, 0, 0]},
+            pm2 : {value : "", step : "", iscolor : [1, 0, 0, 0]},
         },
         fanData : {
-            status : [false, 0, 0, 0, 1, 0],
+            status : [1, 0, 0, 0, 0, 0],
         },
         notificationData : {
+            isData : [1, 0, 0, 0],
+            noData : {
+                title : "",
+                time : "",
+                contents : "알림이 없습니다.",
+            },
             top : {
-                title : "CO2 알림",
-                time : "3분 전",
-                contents : "이산화탄소 농도가 너무 높습니다. 창문을 열어 환기해주세요.",
+                title : "",
+                time : "",
+                contents : "",
             },
             mid : {
-                title : "CO2 알림",
-                time : "1시간 전",
-                contents : "미세먼지 농도가 너무 높습니다. 건강에 유의하세요.",
+                title : "",
+                time : "",
+                contents : "",
             },
             bottom : {
-                title : "CO2 알림",
-                time : "2일 전",
-                contents : "필터 교체가 필요합니다.",
+                title : "",
+                time : "",
+                contents : "",
             },
         },
         active : "active_fan",
         deactive : "deactive_fan",
+        dis_notification : "dis_notification",
+        hide_notification : "hide_notification",
     },
     computed: {
 
@@ -92,35 +100,115 @@ const dashboard = new Vue({
                     
                 }
 
-                if (msg.pm10 > 150){
+                if (msg.mise > 150){
                     dashboard.airData.pm10.step = "매우나쁨";
                     dashboard.airData.pm10.iscolor = [0, 0, 0, 1];
-                } else if (msg.pm10 > 80){
+                } else if (msg.mise > 80){
                     dashboard.airData.pm10.step = "나쁨";
                     dashboard.airData.pm10.iscolor = [0, 0, 1, 0];
-                } else if (msg.pm10 > 30){
+                } else if (msg.mise > 30){
                     dashboard.airData.pm10.step = "보통";
                     dashboard.airData.pm10.iscolor = [0, 1, 0, 0];
-                } else if (msg.pm10 > 0){
+                } else if (msg.mise > 0){
                     dashboard.airData.pm10.step = "좋음";
                     dashboard.airData.pm10.iscolor = [1, 0, 0, 0];
                 } else { 
-
                 }
 
-                if (msg.pm2 > 75){
+                if (msg.chomise > 75){
                     dashboard.airData.pm2.step = "매우나쁨";
                     dashboard.airData.pm2.iscolor = [0, 0, 0, 1];
-                } else if (msg.pm2 > 35){
+                } else if (msg.chomise > 35){
                     dashboard.airData.pm2.step = "나쁨";
                     dashboard.airData.pm2.iscolor = [0, 0, 1, 0];
-                } else if (msg.pm2 > 15){
+                } else if (msg.chomise > 15){
                     dashboard.airData.pm2.step = "보통";
                     dashboard.airData.pm2.iscolor = [0, 1, 0, 0];
-                } else if (msg.pm2 > 0){
+                } else if (msg.chomise > 0){
                     dashboard.airData.pm2.step = "좋음";
                     dashboard.airData.pm2.iscolor = [1, 0, 0, 0];
                 } else { 
+
+                }
+            } else if (msg.payload == "fancontrol") {
+                switch(msg.fancont) {
+                    case 'Auto':
+                        dashboard.fanData.status = [1, 0, 0, 0, 0, 0];
+                        break;
+                    case 'Off':
+                        dashboard.fanData.status = [0, 1, 0, 0, 0, 0];
+                        break;
+                    case 'Low':
+                        dashboard.fanData.status = [0, 0, 1, 0, 0, 0];
+                        break;
+                    case 'Mid':
+                        dashboard.fanData.status = [0, 0, 0, 1, 0, 0];
+                        break;
+                    case 'High':
+                        dashboard.fanData.status = [0, 0, 0, 0, 1, 0];
+                        break;
+                    case 'Full':
+                        dashboard.fanData.status = [0, 0, 0, 0, 0, 1];
+                        break;
+                    default:
+                        dashboard.fanData.status = [0, 0, 0, 0, 0, 0];
+                        break;
+                  }
+            } else if (msg.payload == "notification") {
+                if (dashboard.notificationData.isData[0] == true){
+                    //데이터가 없어서 새로 추가할 때
+                    dashboard.notificationData.isData = [0, 1, 0, 0];
+                    dashboard.notificationData.top.title = msg.title;
+                    dashboard.notificationData.top.time = msg.time;
+                    dashboard.notificationData.top.contents = msg.contents;
+                } else if (dashboard.notificationData.isData[0] == false){
+                    //데이터가 기존에 있음
+                    if (dashboard.notificationData.isData[3]){
+                        //데이터가 현재 3개있음
+                        dashboard.notificationData.isData = [0, 1, 1, 1];
+                        // mid -> bottom
+                        dashboard.notificationData.bottom.title = dashboard.notificationData.mid.title;
+                        dashboard.notificationData.bottom.time = dashboard.notificationData.mid.time;
+                        dashboard.notificationData.bottom.contents = dashboard.notificationData.mid.contents;
+                        // top -> mid
+                        dashboard.notificationData.mid.title = dashboard.notificationData.top.title;
+                        dashboard.notificationData.mid.time = dashboard.notificationData.top.time;
+                        dashboard.notificationData.mid.contents = dashboard.notificationData.top.contents;
+                        // new -> top
+                        dashboard.notificationData.top.title = msg.title;
+                        dashboard.notificationData.top.time = msg.time;
+                        dashboard.notificationData.top.contents = msg.contents;
+                    } else if(dashboard.notificationData.isData[2]){
+                        //데이터가 현재 2개있음
+                        dashboard.notificationData.isData = [0, 1, 1, 1];
+                        // mid -> bottom
+                        dashboard.notificationData.bottom.title = dashboard.notificationData.mid.title;
+                        dashboard.notificationData.bottom.time = dashboard.notificationData.mid.time;
+                        dashboard.notificationData.bottom.contents = dashboard.notificationData.mid.contents;
+                        // top -> mid
+                        dashboard.notificationData.mid.title = dashboard.notificationData.top.title;
+                        dashboard.notificationData.mid.time = dashboard.notificationData.top.time;
+                        dashboard.notificationData.mid.contents = dashboard.notificationData.top.contents;
+                        // new -> top
+                        dashboard.notificationData.top.title = msg.title;
+                        dashboard.notificationData.top.time = msg.time;
+                        dashboard.notificationData.top.contents = msg.contents;
+                    }
+                    else if(dashboard.notificationData.isData[1]){
+                        //데이터가 현재 1개있음
+                        dashboard.notificationData.isData = [0, 1, 1, 0];
+                        // top -> mid
+                        dashboard.notificationData.mid.title = dashboard.notificationData.top.title;
+                        dashboard.notificationData.mid.time = dashboard.notificationData.top.time;
+                        dashboard.notificationData.mid.contents = dashboard.notificationData.top.contents;
+                        // new -> top
+                        dashboard.notificationData.top.title = msg.title;
+                        dashboard.notificationData.top.time = msg.time;
+                        dashboard.notificationData.top.contents = msg.contents;
+                    } else{
+
+                    }
+                } else{
 
                 }
             }

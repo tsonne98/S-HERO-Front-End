@@ -55,13 +55,13 @@
                                             }">PM10</h5>
                                         </b-col>
                                         <b-col style="text-align: center;  padding-left:50px;">
-                                            <div style="font-size: x-large; font-weight: 500;" 
+                                            <span style="font-size: x-large; font-weight: 500;" 
                                             :class="{
                                                 color_1 : airData.pm10.iscolor[0],
                                                 color_2 : airData.pm10.iscolor[1],
                                                 color_3 : airData.pm10.iscolor[2],
                                                 color_4 : airData.pm10.iscolor[3],
-                                            }">{{airData.pm10.step}}</div>
+                                            }">{{airData.pm10.step}}</span>
                                         </b-col>
                                     </b-row>
                                     <b-row>
@@ -86,7 +86,8 @@
                                             }">PM2.5</span>
                                         </b-col>
                                         <b-col style="text-align: right;  padding-left:50px;">
-                                            <span style="font-size: x-large;" :class="{
+                                            <span style="font-size: x-large; font-weight: 500;" 
+                                            :class="{
                                                 color_1 : airData.pm2.iscolor[0],
                                                 color_2 : airData.pm2.iscolor[1],
                                                 color_3 : airData.pm2.iscolor[2],
@@ -175,7 +176,9 @@
                         <b-row style="margin: 0px 0px 10px 0px;">
                             <b-card text-variant="white" class="fan_card_body main_card" >
                                 <b-row>
-                                    <b-col style="text-align: center;"><span>FAN</span></b-col>
+                                    <b-col style="text-align: center; border-right:2px solid #FFFFFF">
+                                        <span>FAN</span>
+                                    </b-col>
                                     <b-col :class="[fanData.status[0] ? active : deactive]"><span>AUTO</span></b-col>
                                     <b-col :class="[fanData.status[1] ? active : deactive]"><span>OFF</span></b-col>
                                     <b-col :class="[fanData.status[2] ? active : deactive]"><span>LOW</span></b-col>
@@ -188,22 +191,31 @@
                         <!-- 알림 UI -->
                         <b-row style="margin: 0px 0px 10px 0px;">
                             <b-card text-variant="white" style="height: 228px; max-height: 228px;" class="notification_card_body main_card">
-                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
+                                    <b-card text-variant="white" class="notification"
+                                    :class="[notificationData.isData[0] ? dis_notification : hide_notification]">
                                         <b-card-text>
-                                            <p style="font-size: x-small;">CO2 알림 - 3분전</p>
-                                            <p style="font-size:15px;">이산화탄소 농도가 너무 높습니다. 창문을 열어 환기해주세요.</p>
+                                            <p style="font-size:15px; text-align: center;">{{notificationData.noData.contents}}</p>
                                         </b-card-text>
                                     </b-card>
-                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
+                                    <b-card text-variant="white" class="notification"
+                                    :class="[notificationData.isData[1] ? dis_notification : hide_notification]">
                                         <b-card-text>
-                                            <p style="font-size: x-small;">미세먼지 알림 - 1시간 전</p>
-                                            <p style="font-size:15px;">미세먼지 농도가 너무 높습니다. 건강에 유의하세요.</p>
+                                            <p style="font-size: x-small;">{{notificationData.top.title}} - {{notificationData.top.time}}</p>
+                                            <p style="font-size:15px;">{{notificationData.top.contents}}</p>
                                         </b-card-text>
                                     </b-card>
-                                    <b-card text-variant="white" style="background-color: #b4b4b411;" class="notification">
+                                    <b-card text-variant="white" class="notification"
+                                    :class="[notificationData.isData[2] ? dis_notification : hide_notification]">
                                         <b-card-text>
-                                            <p style="font-size: x-small;">기기 이상 알림 - 3일 전</p>
-                                            <p style="font-size:15px;">필터 교체가 필요합니다.</p>
+                                            <p style="font-size: x-small;">{{notificationData.mid.title}} - {{notificationData.mid.time}}</p>
+                                            <p style="font-size:15px;">{{notificationData.mid.contents}}</p>
+                                        </b-card-text>
+                                    </b-card>
+                                    <b-card text-variant="white" class="notification"
+                                    :class="[notificationData.isData[3] ? dis_notification : hide_notification]">
+                                        <b-card-text>
+                                            <p style="font-size: x-small;">{{notificationData.bottom.title}} - {{notificationData.bottom.time}}</p>
+                                            <p style="font-size:15px;">{{notificationData.bottom.contents}}</p>
                                         </b-card-text>
                                     </b-card>    
                             </b-card>  
@@ -213,10 +225,10 @@
             </b-container>
         </div>
     </div>
-    <!--
-        <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
-        <script src="./uibuilderfe.js"></script>
-    -->
+
+    <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
+    <script src="./uibuilderfe.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue.min.js"></script>
     <script src="./index.js"></script>
